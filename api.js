@@ -8,7 +8,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
         let reop = {
             method: 'POST'
         };
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=aa96a0cce6e54cdc9b534437241003 &q=${location}&days=1&aqi=no&alerts=yes`, reop)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=aa96a0cce6e54cdc9b534437241003 &q=${location}&days=1&aqi=no&alerts=yes`, reop)
 
             .then(response => response.json())
             .then(data => {
