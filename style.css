@@ -2,7 +2,7 @@ header {
     width: 100%;
       color: #0f0f0f;
       text-align: center;
-      background-image:url('header.jpg');
+      background-image:url('./photos/header.jpg');
       background-position: center;
       padding-bottom: 5%;
       font-size: 30px ;
