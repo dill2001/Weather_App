@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Click Weather</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    
+</head>
+<body data-bs-theme="light">
+    
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="icon" type="image/x-icon" href="C:\Users\user\Videos\Niroth sir video\Weather App\photos\1st.png">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""   />
+
+</head>
+
+<body>
+
+  
+    
+    <nav class="navbar bg-primary " data-bs-theme="dark">
+      <nav>
+        <div class="nav-links" id="navLnks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li>Dark Mode<label class="switch">
+              <input type="checkbox" id="darkmode-toggle" checked>
+              <span class="slider round" id="theme" ></span>
+            </label ></li>
+            <li><a href="">HOME</a></li>
+            <li><a href="#current-weather">CURRNENT</a></li>
+            <li><a href="#weather-forecast">FORECAST</a></li>
+            <li><a href="#news">NEWS</a></li>
+            <li><a href="#weather-map">MAP</a></li>
+            <li><a href="#footer">ABOUT US</a></li>
+          </ul>
+          
+  
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      
+      
+      <div class="user-interface">
+          
+        <input type="text" id="search-loc" placeholder="Enter location" />
+        <button id="search-btn">Search</button>
+        <img class="main" src="">
+      </div>
+   </nav>
+      <header>
+      <h1 class="title"><b>CLICK</b> Weather</h1>
+  
+      </header>
+    
+
+  
+  <div id="current-weather" >
+    <h1 class="heders">Current Weather</h1>
+    <br>
+    <div class="weather-card fs-2" id="local-time">3.00</div>
+      <br>
+    <div class="weather-card">
+      <div class="weather-icon">
+        <img class="weatherIcon1" id="weatherIcon" alt="Weather Icon" src="./photos/1st.png" />
+      </div>
+      <div class="weather-info">
+        <h3 class="location name" id="location">Thiththagalle</h3>
+        <p class="temperature temp_c" id="temperature">115°C</p>
+        <p class="description url" id="description">Cloudy</p>
+      </div>
+     
+    </div>
+    <div style="overflow-x:auto;">
+      <br><br>
+      <table class="tblW">
+        <tr>
+          <td><strong class="locationPara">Location</strong></td>
+
+          <td><strong class="tempPara">Temperature</strong></td>
+
+          <td><strong class="humidityPara">Humidity</strong></td>
+
+          <td><strong class="windPara">Wind Speed</strong></td>
+
+          <td><strong class="conditionPara">Condition</strong></td>
+
+          <td><strong class="regionPara">Region</strong></td>
+
+          <td><strong class="countryPara">Country</strong></td>
+
+          <td><strong>longitude</strong></td>
+
+          <td><strong>latitude</strong></td>
+
+        </tr>
+        <tr>
+          <td><span class="tz_id" id="loca">colombo</span></td>
+          <td><span class="temp_c" id="temp_c">100</span></td>
+          <td><span class="humidity" id="humidity">40</span></td>
+          <td><span class="wind_kph" id="wind">350</span></td>
+          <td class="url" id="status">cloudy</td>
+          <td><span class="region" id="region">Western</span></td>
+          <td><span class="country" id="coun">Sri-Lanka</span></td>
+          <td><span id="lon" >8.33</span></td>
+          <td><span id="lat" >20.00</span></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <section id="weather-forecast">
+    <h1 class="heders">Weather Forecast History</h1>
+  <div class="date-serch">
+      
+  </div>
+  <hr>
+  <div style="overflow-x:auto;">
+    <table class="tblForcast">
+      <tr>
+        <td>
+          <strong id="date11">2024-02-11</strong>
+        </td>
+        <td>
+          <strong id="date12">2024-02-12</strong>
+        </td>
+        <td>
+          <strong id="date13">2024-02-13</strong>
+        </td>
+        <td>
+          <strong id="date14">2024-02-14</strong>
+        </td>
+        <td>
+          <strong id="date15">2024-02-15</strong>
+        </td>
+        <td>
+          <strong id="date16">2024-02-16</strong>
+        </td>
+        <td>
+          <strong id="date17">2024-02-17</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img id="img11" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img12" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img13" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img14" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img15" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img16" class="img" src="" alt="img">
+        </td>
+        <td>
+          <img id="img17" class="img" src="" alt="img">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong class="title11" id="title11">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title12" id="title12">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title13" id="title13">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title14" id="title14">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title15" id="title15">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title16" id="title16">cloudy</strong>
+        </td>
+        <td>
+          <strong class="title17" id="title17">cloudy</strong>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</section>
+  <section id="weather-forecast">
+    <h1 class="heders">Weather Forecast Future </h1>
+
+    <div class="date-serch">
+      
+    </div>
+    <hr>
+    <div style="overflow-x:auto;">
+      <table class="tblForcast">
+        <tr>
+          <td>
+            <strong id="date1">2024-02-04</strong>
+          </td>
+          <td>
+            <strong id="date2">2024-02-05</strong>
+          </td>
+          <td>
+            <strong id="date3">2024-02-06</strong>
+          </td>
+          <td>
+            <strong id="date4">2024-02-07</strong>
+          </td>
+          <td>
+            <strong id="date5">2024-02-08</strong>
+          </td>
+          <td>
+            <strong id="date6">2024-02-09</strong>
+          </td>
+          <td>
+            <strong id="date7">2024-02-10</strong>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img id="img1" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img2" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img3" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img4" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img5" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img6" class="img" src="" alt="img">
+          </td>
+          <td>
+            <img id="img7" class="img" src="" alt="img">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong class="title1" id="title1">cloud</strong>
+          </td>
+          <td>
+            <strong class="title2" id="title2">cloud-lightning</strong>
+          </td>
+          <td>
+            <strong class="title3" id="title3">partly-cloudy</strong>
+          </td>
+          <td>
+            <strong class="title4" id="title4">night-wind</strong>
+          </td>
+          <td>
+            <strong class="title5" id="title5">storm</strong>
+          </td>
+          <td>
+            <strong class="title6" id="title6">cloud-lightning</strong>
+          </td>
+          <td>
+            <strong class="title7" id="title7">night-wind</strong>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </section>
+<!-- MAP -->
+  <section id="weather-map">
+    <h1 class="heders">Map</h1>
+    <div id="map" class="map-d">
+    </div>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  </section>
+  
+  <section id="news">
+    <h1 class="heders">Top News</h1>
+      <div class="grid-cols-1 sm:grid md:grid-cols-3">
+        <div
+          class="mx-3 mt-6 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!" id="a1">
+            <img id="imgN1" class="rounded-t-lg" src="/photos/pupa.jpg"
+              alt="Skyscrapers" />
+          </a>
+          <div class="p-6">
+            <h5 id="title1" class="mb-2 text-xl font-medium leading-tight text-neutral-800">
+              Dry weather will prevail over the SRI LANKA
+            </h5>
+            <p id="p1" class="mb-4 text-base text-neutral-600">
+              Misty conditions can be expected at some places in Sabaragamuwa and Central provinces and in Galle and Kalutara districts during the morning.
+Mainly dry weather will prevail over the island.
+Wind speed will be (15-30) kmph. Winds will be south-easterly in the sea areas off the coast extending from Kankasanthurai to Batticaloa via Trincomalee. Winds will be variable in direction in the other sea areas around the island.
+Sea areas around the island will be slight to moderate.
+            </p>
+          </div>
+          <div class="mt-auto border-t-2 border-neutral-100 px-6 py-3 text-center dark:border-neutral-600">
+            <small id="ptime1">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div
+          class="mx-3 mt-6 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!" id="a2">
+            <img id="imgN2" class="rounded-t-lg" src="/photos/ginikanda.jpg"
+              alt="Los Angeles Skyscrapers" />
+          </a>
+          <div class="p-6">
+            <h5 id="title2" class="mb-2 text-xl font-medium leading-tight text-neutral-800">
+              Iceland volcano lava nears Grindavik in new eruption
+            </h5>
+            <p id="p2" class="mb-4 text-base text-neutral-600 ">
+              A state of emergency has been declared in southern Iceland because of another volcanic eruption on the Reykjanes Peninsula – the fourth since December.
+It is hought to be the most powerful flare-up so far. Lava has reached the eastern defences around the evacuated town of Grindavik, local media said.
+            </p>
+          </div>
+          <div class="mt-auto border-t-2 border-neutral-100 px-6 py-3 text-center dark:border-neutral-600">
+            <small id="ptime2">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div
+          class="mx-3 mt-6 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!" id="a3">
+            <img id="imgN3" class="rounded-t-lg" src="/photos/hima.jpg"
+              alt="Palm Springs Road" />
+          </a>
+          <div class="p-6">
+            <h5 id="title3" class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">
+              A major weather pattern change is about to bring a wild swing in temperatures to the US
+            </h5>
+            <p id="p3" class="mb-4 text-base text-neutral-600">
+             
+Sick of the cold? Mother Nature has a change in store: A dramatic weather pattern change is coming next week that will flip the brutal 
+cold on its head.
+Few spots in the continental US have escaped the cold over the last week. Its wind chills plunged below minus 40 degrees in parts of the
+ central US and it made for the coldest 
+ Iowa caucuses ever held.
+But by next week, frigid cold will be a istant memory across the mainland US as unseasonably mild conditions wipe out the chill. In some spots,
+ it’ll feel more like March than January
+            </p>
+          </div>
+          <div class="mt-auto border-t-2 border-neutral-100 px-6 py-3 text-center dark:border-neutral-600 ">
+            <small id="ptime3">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <footer id="footer">
+    <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+          
+          <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+            <div class="flex flex-col items-start">
+              <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                </svg>
+              </div>
+              <dt class="mt-4 font-semibold text-white">Weekly articles</dt>
+              <dd class="mt-2 leading-7 text-gray-400">
+                Non laboris consequat cupidatat laborum magna. Eiusmod non
+                irure cupidatat duis commodo amet.
+              </dd>
+            </div>
+            <div class="flex flex-col items-start">
+              <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 013.15 0V15M6.9 7.575a1.575 1.575 0 10-3.15 0v8.175a6.75 6.75 0 006.75 6.75h2.018a5.25 5.25 0 003.712-1.538l1.732-1.732a5.25 5.25 0 001.538-3.712l.003-2.024a.668.668 0 01.198-.471 1.575 1.575 0 10-2.228-2.228 3.818 3.818 0 00-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0116.35 15m.002 0h-.002" />
+                </svg>
+              </div>
+              <dt class="mt-4 font-semibold text-white">No spam</dt>
+              <dd class="mt-2 leading-7 text-gray-400">
+                Officia excepteur ullamco ut sint duis proident non
+                adipisicing. Voluptate incididunt anim.
+              </dd>
+            </div>
+            <div class="flex flex-col items-start">
+              <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+              </svg>
+              </div>
+              <dt class="mt-4 font-semibold text-white">about us</dt>
+              <dd class="mt-2 leading-7 text-gray-400">
+               MR.dill GP<br> 
+               malindudilshaniuhs@gmail.com<br>
+               076-7781290/071-0585225<br>
+               Iuhs Nalanda Campus Thiththagalle, Galle. 
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
+        <div class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+              
+            "></div>
+      </div>
+
+     
+
+
+
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <script src="api.js"></script>
+</body>
+
+</html>
